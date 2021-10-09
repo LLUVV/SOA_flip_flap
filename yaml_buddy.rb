@@ -4,7 +4,7 @@ module YamlBuddy
     # take_tsv: converts a String with TSV data into @data
     # parameter: tsv - a String in TSV format
     def take_yaml(tsv)
-
+        @data = YAML.safe_load(tsv)
     end
   
     # to_tsv: converts @data into tsv string

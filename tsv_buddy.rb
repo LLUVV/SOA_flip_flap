@@ -20,6 +20,11 @@ module TsvBuddy
   # to_tsv: converts @data into tsv string
   # returns: String in TSV format
   def to_tsv
-    
+    str = ""
+    @data[0].each_key{|key| str << key << "\t"}
+    @data.each do |line|
+        str << "\n"
+        @data.each_value {|value| str << value << "\t"}
+    end
   end
 end
