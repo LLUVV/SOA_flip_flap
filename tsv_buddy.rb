@@ -6,7 +6,7 @@ module TsvBuddy
   # parameter: tsv - a String in TSV format
   def take_tsv(tsv)
     @data = []
-    lines = tsv.split("\n").map { |str| str.split("\t")}
+    lines = tsv.split("\n").map { |str| str.split("\t") }
     keys = lines[0]
     (1...lines.length).map do |index1|
       record = {}
@@ -20,11 +20,14 @@ module TsvBuddy
   # to_tsv: converts @data into tsv string
   # returns: String in TSV format
   def to_tsv
-    str = ""
-    @data[0].each_key{|key| str << key << "\t"}
+    str = ''
+    @data[0].each_key { |key| str = "#{str}#{key}\t" }
+    str = str[0...-1]
     @data.each do |line|
-        str << "\n"
-        @data.each_value {|value| str << value << "\t"}
+      str << "\n"
+      line.each_value { |value| str << value << "\t" }
+      str = str[0...-1]
     end
+    str << "\n"
   end
 end
